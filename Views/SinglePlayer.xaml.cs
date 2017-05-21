@@ -1,4 +1,5 @@
 ﻿using MazeMenu.ViewModel;
+using MazeMenu.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MazeMenu.Views;
 
 namespace MazeMenu
 {
@@ -28,6 +30,13 @@ namespace MazeMenu
             this.singlePlayerGameViewModel = new SinglePlayerGameViewModel
                 (new SinglePlayerGameModel(), new SettingsModel());
             this.DataContext = this.singlePlayerGameViewModel;
+        }
+
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Open maze window.
+            new SinglePlayerGameMaze(NumOfRows.Text, numOfCols.Text, MazeNameBox.Text).Show();
+            this.Close();
         }
     }
 }

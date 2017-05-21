@@ -10,7 +10,15 @@ namespace MazeMenu.Model
     public interface ISettingsModel : INotifyPropertyChanged
     {
 
-        int DefaultAlgo { get; set; }
+    String IpAddress { get; set; }
+        
+    int Port { get; set; }
+
+    int DefaultRows { get; set; }
+
+    int DefaultCols { get; set; }
+
+    int DefaultAlgo { get; set; }
 
     }
 }

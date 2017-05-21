@@ -11,17 +11,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MazeMenu.ViewModel;
+using MazeMenu.Model;
 
-namespace MazeMenu
+namespace MazeMenu.Views
 {
     /// <summary>
-    /// Interaction logic for Maze.xaml
+    /// Interaction logic for SinglePlayerGameMaze.xaml
     /// </summary>
-    public partial class MazeWindow : Window
+    public partial class SinglePlayerGameMaze : Window
     {
-        public MazeWindow()
+
+        private SinglePlayerGameViewModel spViewModel;
+
+        public SinglePlayerGameMaze(String numOfRows, String numOfCols, String nameOfMaze)
         {
             InitializeComponent();
+            this.spViewModel = new SinglePlayerGameViewModel
+                (new SinglePlayerGameModel(), new SettingsModel());
+            this.DataContext = this.spViewModel;
+            this.spViewModel.StartNewGame(numOfRows, numOfCols, nameOfMaze);
         }
 
         /// <summary>
@@ -34,6 +43,11 @@ namespace MazeMenu
             MainWindow mw = new MainWindow();
             mw.Show();
             this.Close();
+        }
+
+        private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

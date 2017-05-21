@@ -5,13 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MazeMenu.Model;
+using System.ComponentModel;
 
 namespace MazeMenu
 {
-    public class SettingsViewModel
+    public class SettingsViewModel : INotifyPropertyChanged 
     {
 
         private SettingsModel settingModel;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyChanged(string propName)
+        {
+            if(PropertyChanged != null)
+            {
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propName));
+            }
+        }
 
         public SettingsViewModel()
         {
@@ -27,6 +38,7 @@ namespace MazeMenu
             set
             {
                 this.settingModel.DefaultAlgo = value;
+                this.NotifyChanged("VM_SelectedAlgo");
             }
         }
 
@@ -39,6 +51,7 @@ namespace MazeMenu
             set
             {
                 this.settingModel.Port = value;
+                this.NotifyChanged("VM_Port");
             }
         }
 
@@ -51,6 +64,7 @@ namespace MazeMenu
             set
             {
                 this.settingModel.DefaultCols = value;
+                this.NotifyChanged("VM_DefaultCol");
             }
         }
 
@@ -63,6 +77,7 @@ namespace MazeMenu
             set
             {
                 this.settingModel.DefaultRows = value;
+                this.NotifyChanged("VM_DefaultRow");
             }
         }
     }

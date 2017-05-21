@@ -10,6 +10,10 @@ namespace MazeMenu.Model
 {
     public class SettingsModel : ISettingsModel
     {
+        public SettingsModel()
+        {
+            Properties.Settings.Default.Reload();
+        }
 
         public String IpAddress {
             get

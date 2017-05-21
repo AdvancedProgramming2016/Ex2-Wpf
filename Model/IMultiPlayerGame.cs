@@ -8,15 +8,16 @@ using MazeLib;
 
 namespace MazeMenu.Model
 {
-    public interface ISinglePlayerGame : INotifyPropertyChanged
+    interface IMultiPlayerGame : INotifyPropertyChanged
     {
         Maze Maze { get; set; }
+        Position OpponentPosition { get; set; }
         Position PlayerPosition { get; set; }
-        
-        void StartNewGame(String numOfRows, String numOfCols, String nameOfMaze);
-        void MovePlayer();
-        void SolveMaze();
-        void Restart();
 
+        //void JoinGame(Game game);
+        void JoinGame();
+        void StartNewGame();
+        void MovePlayer(Position position);
+        void CloseGame();
     }
 }

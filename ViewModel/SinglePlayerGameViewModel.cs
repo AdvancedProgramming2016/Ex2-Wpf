@@ -73,10 +73,18 @@ namespace MazeMenu.ViewModel
             }
         }
 
+        public String VM_MazeName
+        {
+            get
+            {
+                return this.spModel.Maze.Name;
+            }
+        }
+
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
         public SinglePlayerGameViewModel(ISinglePlayerGame spModel, ISettingsModel settingsModel)
@@ -103,9 +111,9 @@ namespace MazeMenu.ViewModel
             this.spModel.SolveMaze();
         }
 
-        public void StartNewGame()
+        public void StartNewGame(String numOfCols, String numOfRows, String nameOfMaze)
         {
-            this.spModel.StartNewGame();
+            this.spModel.StartNewGame(numOfCols, numOfRows, nameOfMaze);
         }
     }
 }

@@ -12,7 +12,7 @@ using System.IO;
 
 namespace MazeMenu.Model
 {
-    class SinglePlayerGameModel : ISinglePlayerGame
+    public class SinglePlayerGameModel : ISinglePlayerGame
     {
 
         private Maze maze;
@@ -35,9 +35,11 @@ namespace MazeMenu.Model
             set
             {
                 this.maze = value;
-                NotifyPropertyChanged("Maze");
+                this.NotifyPropertyChanged("Maze");
             }
         }
+
+        public String NameOfMaze { get; set; }
 
         public Position PlayerPosition
         {
@@ -49,7 +51,7 @@ namespace MazeMenu.Model
             set
             {
                 this.playerPosition = value;
-                NotifyPropertyChanged("PlayerPosition");
+                this.NotifyPropertyChanged("PlayerPosition");
             }
         }
 
@@ -58,7 +60,7 @@ namespace MazeMenu.Model
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
         public void MovePlayer()
@@ -73,89 +75,13 @@ namespace MazeMenu.Model
 
         public void SolveMaze()
         {
-            "solve";
+            throw new NotImplementedException();
         }
 
-        public void StartNewGame()
+        public void StartNewGame(String numOfRows, String numOfCols, String nameOfMaze)
         {
-
-            //End point initialization.
-            int port = int.Parse(ConfigurationManager.AppSettings["port"]);
-            string ip = ConfigurationManager.AppSettings["ip"];
-            IPEndPoint endPoint =
-                new IPEndPoint(IPAddress.Parse(ip), port);
-
-            //Vatiables declaration.
-            TcpClient tcpClient = null;
-            NetworkStream stream = null;
-            StreamReader reader = null;
-            StreamWriter writer = null;
-            IListener serverListener = null;
-            bool isMultiplayer = false;
-            bool isConnected = false;
-
-            //Loop while client is on.
-            while (true)
-            {
-                string command = string.Empty;
-
-                Console.WriteLine("Enter a command");
-
-                command = Console.ReadLine();
-
-                //If not connected, Initialize connection.
-                if (!isConnected || serverListener.IsMultiplayer == false)
-                {
-                    tcpClient = new TcpClient();
-                    tcpClient.Connect(endPoint);
-                    stream = tcpClient.GetStream();
-                    writer = new StreamWriter(stream);
-                    reader = new StreamReader(stream);
-                    isConnected = true;
-                    serverListener = new ServerListener(tcpClient, reader);
-
-                    //start listener
-                    serverListener.StartListening();
-                }
-
-                //Communicate with server.
-                try
-                {
-                    string[] splitCommand = command.Split(' ');
-
-                    //Check if the connection needs to remain open.
-                    if (splitCommand[0] == "start" ||
-                        splitCommand[0] == "join")
-                    {
-                        isMultiplayer = true;
-                        serverListener.IsMultiplayer = true;
-                    }
-
-                    //Send message to server.
-                    writer.Write(command + '\n');
-                    writer.Flush();
-
-
-                    //Check if connection can be closed.
-                    if (!isMultiplayer ||
-                        (splitCommand[0] == "close" && splitCommand.Length == 2))
-                    {
-                        isMultiplayer = false;
-                        serverListener.IsMultiplayer = false;
-
-                        //Wait for listener to end.
-                        serverListener.WaitForTask();
-                        stream.Close();
-                        tcpClient.Close();
-                        isConnected = false;
-                    }
-                }
-                catch (Exception e)
-                {
-                    continue;
-                }
-            }
-
-        }
+            // Get from server the maze.
+            //Maze = getFromServer
+        } 
     }
 }

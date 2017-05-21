@@ -11,13 +11,13 @@
         <TextBox x:Name="ipAddressBox" HorizontalAlignment="Left" Height="23" Margin="109,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         
         <TextBlock x:Name="PortBlock" HorizontalAlignment="Left" Margin="22,67,0,0" TextWrapping="Wrap" Text="Port address:" VerticalAlignment="Top" RenderTransformOrigin="-0.082,-0.438"/>
-        <TextBox x:Name="portBox" HorizontalAlignment="Left" Height="23" Margin="109,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="portBox" Text="{Binding VM_Port}" HorizontalAlignment="Left" Height="23" Margin="109,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         
         <TextBlock x:Name="mazeRowsBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Maze rows:" VerticalAlignment="Top" Margin="22,98,0,0"/>
         <TextBox x:Name="mazeBox" HorizontalAlignment="Left" Height="23" Margin="109,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         
         <TextBlock x:Name="algorithm" HorizontalAlignment="Left" Margin="22,179,0,0" TextWrapping="Wrap" Text="Algorithm:" VerticalAlignment="Top"/>
-        <ComboBox ItemsSource="{Binding Path=AlgoList}" SelectedIndex="{Binding Path=SelectedAlgo}" SelectedValue="{Binding Path=AlgoList}" x:Name="algorithmComboBox" HorizontalAlignment="Left" Margin="109,173,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox SelectedIndex="{Binding Path=VM_SelectedAlgo}" x:Name="algorithmComboBox" HorizontalAlignment="Left" Margin="109,173,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Bfs" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Dfs" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>

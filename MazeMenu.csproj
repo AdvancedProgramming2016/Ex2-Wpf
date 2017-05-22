@@ -36,10 +36,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MazeLib">
-      <HintPath>..\..\..\..\..\Downloads\MazeLib.dll</HintPath>
+    <Reference Include="MazeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,17 +61,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\IListener.cs" />
     <Compile Include="Model\IMultiPlayerGame.cs" />
     <Compile Include="Model\ISettingsModel.cs" />
     <Compile Include="Model\ISinglePlayerGame.cs" />
+    <Compile Include="Model\Listeners\CommunicationClient.cs" />
+    <Compile Include="Model\Listeners\IClientConnection.cs" />
+    <Compile Include="Model\Listeners\IListener.cs" />
+    <Compile Include="Model\Listeners\ServerListener.cs" />
     <Compile Include="Model\MultiPlayerModel.cs" />
-    <Compile Include="Model\ServerListener.cs" />
+    <Compile Include="Model\Parsers\CommandParser.cs" />
     <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="Model\SinglePlayerGameModel.cs" />
     <Compile Include="SeperateUserControl\MazeGrid.xaml.cs">
       <DependentUpon>MazeGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ISinglePlayerModel.cs" />
+    <Compile Include="ViewModels\SinglePlayerViewModel.cs" />
     <Compile Include="ViewModel\MultiPlayerGameViewModel.cs" />
     <Compile Include="ViewModel\SinglePlayerGameViewModel.cs" />
     <Compile Include="Views\MultiplePlayerMenu.xaml.cs">
@@ -148,12 +155,7 @@
   <ItemGroup>
     <Resource Include="images\maze.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Ex2\GameClient\GameClient.csproj">
-      <Project>{6B138890-E036-4EEE-80C1-0477E02A4DA9}</Project>
-      <Name>GameClient</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

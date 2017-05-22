@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
-using GameClient.Listeners;
 
-namespace GameClient
+namespace MazeMenu.Model.Listeners
 {
-    public class ServerListener : IListener
+    /// <summary>
+    /// Listens for server input.
+    /// </summary>
+    public class ServerListener : IListener, INotifyPropertyChanged
 
     {
         /// <summary>
         /// Tcp client.
         /// </summary>
-        private TcpClient client;
+        private readonly TcpClient client;
 
         /// <summary>
         /// Stream reader.
         /// </summary>
-        private StreamReader reader;
+        private readonly StreamReader reader;
 
         /// <summary>
         /// Thread to run.
@@ -50,10 +51,10 @@ namespace GameClient
         private bool IsRead { get; set; }
 
         /// <summary>
-        /// Command string from user.
+        /// Command string.
         /// </summary>
-        public string Command { get; private set; }
-                     
+        private string command;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -66,6 +67,34 @@ namespace GameClient
             this.Continue = true;
             this.IsRead = false;
             this.IsMultiplayer = false;
+        }
+
+        /// <summary>
+        /// Command string from user.
+        /// </summary>
+        public string Command
+        {
+            get { return command; }
+            set
+            {
+                command = value;
+                NotifyPropertyChanged("Command");
+            }
+        }
+
+        /// <summary>
+        /// Property changed event handler.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifies that the property was changed.
+        /// </summary>
+        /// <param name="propName">property name.</param>
+        public void NotifyPropertyChanged(string propName)
+        {
+            PropertyChanged?.Invoke(this,
+                new PropertyChangedEventArgs(propName));
         }
 
         /// <summary>
@@ -124,7 +153,8 @@ namespace GameClient
                         if (Command != string.Empty)
                         {
                             Console.WriteLine("Result:\n{0}", Command);
-                            Command = string.Empty;
+                            //TODO might cause INotify to fail
+                            //Command = string.Empty;
                         }
 
                         //If not a multiplayer game, stop the task.

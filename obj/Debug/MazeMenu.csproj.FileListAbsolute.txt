@@ -27,3 +27,28 @@ C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplicati
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\MazeMenu.pdb
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SinglePlayerGameMaze.g.cs
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\bin\Debug\MazeMenu.exe.config
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.csprojResolveAssemblyReference.cache
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\SeperateUserControl\MazeGrid.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\MultiplePlayerMenu.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\SettingsMenu.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\SinglePlayer.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\SinglePlayerGameMaze.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\App.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu_MarkupCompile.cache
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu_MarkupCompile.lref
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\bin\Debug\MazeMenu.exe
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\bin\Debug\MazeMenu.pdb
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\SeperateUserControl\MazeGrid.baml
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\MainWindow.baml
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\MultiplePlayerMenu.baml
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\SettingsMenu.baml
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\SinglePlayer.baml
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\Views\SinglePlayerGameMaze.baml
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.g.resources
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.Properties.Resources.resources
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.csproj.GenerateResource.Cache
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.exe
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.pdb

@@ -6,31 +6,35 @@ using System.Text;
 using System.Threading.Tasks;
 using MazeLib;
 using MazeMenu.Model;
-using GameClient;
 using System.Net.Sockets;
 using System.IO;
+using MazeMenu.Model.Listeners;
+using MazeMenu.Model.Parsers;
 
 namespace MazeMenu.Model
 {
     public class SinglePlayerGameModel : ISinglePlayerGame
     {
-
         private Maze maze;
         private Position playerPosition;
-        private ServerListener serverListener;
+
+        private CommunicationClient communicationClient;
+        //private ServerListener serverListener;
 
         public SinglePlayerGameModel()
         {
-            TcpClient tcpClient = new TcpClient();
-            this.serverListener = new ServerListener(tcpClient, new StreamReader(tcpClient.GetStream()));
+            communicationClient = new CommunicationClient();
+            //TODO get ip and port from Settings
+            communicationClient.Connect(5000, "127.0.0.1");
+            //  TcpClient tcpClient = new TcpClient();
+            //  this.serverListener = new ServerListener(tcpClient, new StreamReader(tcpClient.GetStream()));
         }
+
+        public string CommandPropertyChanged { get; set; }
 
         public Maze Maze
         {
-            get
-            {
-                return this.maze;
-            }
+            get { return this.maze; }
 
             set
             {
@@ -43,10 +47,7 @@ namespace MazeMenu.Model
 
         public Position PlayerPosition
         {
-            get
-            {
-                return this.playerPosition;
-            }
+            get { return this.playerPosition; }
 
             set
             {
@@ -60,7 +61,8 @@ namespace MazeMenu.Model
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+                this.PropertyChanged?.Invoke(this,
+                    new PropertyChangedEventArgs(propName));
         }
 
         public void MovePlayer()
@@ -78,10 +80,29 @@ namespace MazeMenu.Model
             throw new NotImplementedException();
         }
 
-        public void StartNewGame(String numOfRows, String numOfCols, String nameOfMaze)
+        public void GenerateGame(String numOfRows, String numOfCols,
+            String nameOfMaze)
         {
-            // Get from server the maze.
-            //Maze = getFromServer
-        } 
+            string command;
+
+            //Parse into the right format.
+            command = CommandParser.ParseToGenerateCommand(nameOfMaze,
+                numOfRows,
+                numOfCols);
+
+            //Send command to the server.
+            communicationClient.SendToServer(command);
+
+            string generateResult;
+            // CommandPropertyChanged = "generate";
+
+            communicationClient.ServerListener.PropertyChanged +=
+                delegate(Object sender, PropertyChangedEventArgs e)
+                {
+                    generateResult = communicationClient.ServerListener.Command;
+
+                    maze = Maze.FromJSON(generateResult);
+                };
+            }
     }
 }

@@ -3,7 +3,6 @@ c:\users\user\documents\visual studio 2015\Projects\WpfApplication1\WpfApplicati
 c:\users\user\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\MazeMenu.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\bin\Debug\MazeMenu.exe.config
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\MainWindow.g.cs
-C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\MazeWindow.g.cs
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\MultiplePlayerMenu.g.cs
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SettingsMenu.g.cs
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SinglePlayer.g.cs
@@ -17,7 +16,6 @@ C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplicati
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\bin\Debug\GameClient.pdb
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\SeperateUserControl\MazeGrid.baml
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\MainWindow.baml
-C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\MazeWindow.baml
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\MultiplePlayerMenu.baml
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SettingsMenu.baml
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SinglePlayer.baml
@@ -27,3 +25,7 @@ C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplicati
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\MazeMenu.pdb
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SinglePlayerGameMaze.g.cs
 C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SinglePlayerGameMaze.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SeperateUserControl\MazeGrid.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\MultiplePlayerGameMaze.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\Views\SeperateUserControl\MazeGrid.baml

@@ -12,7 +12,7 @@ namespace MazeMenu.Model
     {
         Maze Maze { get; set; }
         Position PlayerPosition { get; set; }
-        
+
         void StartNewGame(String numOfRows, String numOfCols, String nameOfMaze);
         void MovePlayer();
         void SolveMaze();

@@ -9,7 +9,7 @@ using MazeLib;
 
 namespace MazeMenu.ViewModel
 {
-    class MultiPlayerGameViewModel : INotifyPropertyChanged
+    public class MultiPlayerGameViewModel : INotifyPropertyChanged
     {
         
         private IMultiPlayerGame mpModel;
@@ -56,24 +56,62 @@ namespace MazeMenu.ViewModel
             }
         }
 
+        public int VM_Rows
+        {
+            get
+            {
+                return this.mpModel.Maze.Rows;
+            }
+         }
+
+        public int VM_Cols
+        {
+            get
+            {
+                return this.mpModel.Maze.Cols;
+            }
+        }
+
+        public String VM_MazeName
+        {
+            get
+            {
+                return this.mpModel.Maze.Name;
+            }
+        }
+
+        public String VM_InitialPosition
+        {
+            get
+            {
+                return this.mpModel.Maze.InitialPos.ToString();
+            }
+        }
+
+        public String VM_DestPosition
+        {
+            get
+            {
+                return this.mpModel.Maze.GoalPos.ToString();
+            }
+        }
+
         public void MovePlayer(Position position)
         {
             this.mpModel.MovePlayer(position);
         }
 
-        //void JoinGame(Game game)
-        void JoinGame()
+        public void JoinGame()
         {
-            //this.mpModel.JoinGame(game);
             this.mpModel.JoinGame();
         }
 
-        void StartNewGame()
+        public void StartNewGame()
         {
             this.mpModel.StartNewGame();
         }
         
-        void CloseGame()
+        public void CloseGame()
         {
             this.mpModel.CloseGame();
         }

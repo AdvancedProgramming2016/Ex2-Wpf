@@ -22,7 +22,7 @@ namespace MazeMenu.Model
         public SinglePlayerGameModel()
         {
             TcpClient tcpClient = new TcpClient();
-            this.serverListener = new ServerListener(tcpClient, new StreamReader(tcpClient.GetStream()));
+            //this.serverListener = new ServerListener(tcpClient, new StreamReader(tcpClient.GetStream()));
         }
 
         public Maze Maze
@@ -38,8 +38,6 @@ namespace MazeMenu.Model
                 this.NotifyPropertyChanged("Maze");
             }
         }
-
-        public String NameOfMaze { get; set; }
 
         public Position PlayerPosition
         {

@@ -26,7 +26,8 @@ namespace MazeMenu.Model
             }
         }
 
-        public int Port {
+        public int Port
+        {
             get
             {
                 return MazeMenu.Properties.Settings.Default.Port;
@@ -37,7 +38,8 @@ namespace MazeMenu.Model
             }
         }
 
-        public int DefaultRows {
+        public int DefaultRows
+        {
             get
             {
                 return MazeMenu.Properties.Settings.Default.DefaultRows;
@@ -48,7 +50,8 @@ namespace MazeMenu.Model
             }
         }
 
-        public int DefaultCols {
+        public int DefaultCols
+        {
             get
             {
                 return MazeMenu.Properties.Settings.Default.DefaultCols;

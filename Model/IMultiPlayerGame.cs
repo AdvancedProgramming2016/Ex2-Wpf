@@ -8,13 +8,12 @@ using MazeLib;
 
 namespace MazeMenu.Model
 {
-    interface IMultiPlayerGame : INotifyPropertyChanged
+    public interface IMultiPlayerGame : INotifyPropertyChanged
     {
         Maze Maze { get; set; }
         Position OpponentPosition { get; set; }
         Position PlayerPosition { get; set; }
-
-        //void JoinGame(Game game);
+        
         void JoinGame();
         void StartNewGame();
         void MovePlayer(Position position);

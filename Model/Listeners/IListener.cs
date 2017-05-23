@@ -37,6 +37,6 @@ namespace MazeMenu.Model.Listeners
         /// </summary>
         bool IsMultiplayer { get; set; }
 
-        event PropertyChangedEventHandler PropertyChanged;
+        event EventHandler SomethingHappened;
     }
 }

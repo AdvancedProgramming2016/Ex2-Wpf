@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace MazeMenu.Model.Listeners
     /// <summary>
     /// Handles communication with the server.
     /// </summary>
-    public class CommunicationClient : IClientConnection
+    public class CommunicationClient : IClientConnection, INotifyPropertyChanged
     {
         private int port;
         private string ip;
@@ -22,8 +23,9 @@ namespace MazeMenu.Model.Listeners
         private NetworkStream stream;
         private StreamReader reader;
         private StreamWriter writer;
-      private bool isMultiplayer;
+        private bool isMultiplayer;
         private bool isConnected;
+        private string commandFromUser;
 
         /// <summary>
         /// Constructor.
@@ -61,6 +63,7 @@ namespace MazeMenu.Model.Listeners
                 reader = new StreamReader(stream);
                 isConnected = true;
                 ServerListener = new ServerListener(tcpClient, reader);
+                ServerListener.SomethingHappened += HandleServerAnswer;
 
                 //start listener
                 ServerListener.StartListening();
@@ -101,6 +104,30 @@ namespace MazeMenu.Model.Listeners
             {
                 return;
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged(string propName)
+        {
+            PropertyChanged?.Invoke(this,
+                new PropertyChangedEventArgs(propName));
+        }
+
+        public string CommandFromUser
+        {
+            get { return commandFromUser; }
+            set
+            {
+                commandFromUser = value;
+                NotifyPropertyChanged("Command");
+            }
+        }
+
+        //TODO maybe pass command as EventArgs
+        private void HandleServerAnswer(object sender, EventArgs e)
+        {
+            CommandFromUser = ServerListener.Command;
         }
     }
 }

@@ -23,5 +23,7 @@ namespace MazeMenu.Model.Listeners
         /// </summary>
         /// <param name="command">message</param>
         void SendToServer(string command);
+
+        string CommandFromUser { get; set; }
     }
 }

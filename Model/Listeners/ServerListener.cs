@@ -12,7 +12,7 @@ namespace MazeMenu.Model.Listeners
     /// <summary>
     /// Listens for server input.
     /// </summary>
-    public class ServerListener : IListener, INotifyPropertyChanged
+    public class ServerListener : IListener//, INotifyPropertyChanged
 
     {
         /// <summary>
@@ -78,24 +78,26 @@ namespace MazeMenu.Model.Listeners
             set
             {
                 command = value;
-                NotifyPropertyChanged("Command");
+                SomethingHappened?.Invoke(this, null);
             }
         }
 
         /// <summary>
         /// Property changed event handler.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        // public event PropertyChangedEventHandler PropertyChanged;
 
+        public event EventHandler SomethingHappened;
         /// <summary>
         /// Notifies that the property was changed.
         /// </summary>
         /// <param name="propName">property name.</param>
-        public void NotifyPropertyChanged(string propName)
+        /*public void NotifyPropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this,
                 new PropertyChangedEventArgs(propName));
         }
+        */
 
         /// <summary>
         /// Listens for server input.

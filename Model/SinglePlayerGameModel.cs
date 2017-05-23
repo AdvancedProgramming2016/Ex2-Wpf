@@ -16,19 +16,28 @@ namespace MazeMenu.Model
     public class SinglePlayerGameModel : ISinglePlayerGame
     {
         private Maze maze;
-        private Position playerPosition;
+        // private Position playerPosition;
 
         private CommunicationClient communicationClient;
         //private ServerListener serverListener;
 
         public SinglePlayerGameModel()
         {
+            string resultCommand;
             communicationClient = new CommunicationClient();
             //TODO get ip and port from Settings
-            communicationClient.Connect(5000, "127.0.0.1");
+            communicationClient.Connect(8000, "127.0.0.1");
+
+            communicationClient.PropertyChanged +=
+                delegate(Object sender, PropertyChangedEventArgs e)
+                {
+                    ServerResponse = communicationClient.CommandFromUser;
+                };
             //  TcpClient tcpClient = new TcpClient();
             //  this.serverListener = new ServerListener(tcpClient, new StreamReader(tcpClient.GetStream()));
         }
+
+        public string ServerResponse { get; set; }
 
         public string CommandPropertyChanged { get; set; }
 
@@ -45,30 +54,29 @@ namespace MazeMenu.Model
 
         public String NameOfMaze { get; set; }
 
-        public Position PlayerPosition
-        {
-            get { return this.playerPosition; }
-
-            set
-            {
-                this.playerPosition = value;
-                this.NotifyPropertyChanged("PlayerPosition");
-            }
-        }
+        /* public Position PlayerPosition
+         {
+             get { return this.playerPosition; }
+ 
+             set
+             {
+                 this.playerPosition = value;
+                 this.NotifyPropertyChanged("PlayerPosition");
+             }
+         }*/
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propName)
         {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged?.Invoke(this,
-                    new PropertyChangedEventArgs(propName));
+            PropertyChanged?.Invoke(this,
+                new PropertyChangedEventArgs(propName));
         }
 
-        public void MovePlayer()
-        {
-            throw new NotImplementedException();
-        }
+        /* public void MovePlayer()
+         {
+             throw new NotImplementedException();
+         }*/
 
         public void Restart()
         {
@@ -90,19 +98,47 @@ namespace MazeMenu.Model
                 numOfRows,
                 numOfCols);
 
+            CommandPropertyChanged = "generate";
+
             //Send command to the server.
             communicationClient.SendToServer(command);
 
-            string generateResult;
-            // CommandPropertyChanged = "generate";
+            HandleServerResult(ServerResponse);
+            //string generateResult;
 
-            communicationClient.ServerListener.PropertyChanged +=
-                delegate(Object sender, PropertyChangedEventArgs e)
-                {
-                    generateResult = communicationClient.ServerListener.Command;
+            /* communicationClient.ServerListener.PropertyChanged +=
+                 delegate(Object sender, PropertyChangedEventArgs e)
+                 {
+                     //TODO the xaml gives only rows and name, columns missing
+                     generateResult = communicationClient.ServerListener.Command;
+ 
+                     maze = Maze.FromJSON(generateResult);
+                 };*/
+        }
 
-                    maze = Maze.FromJSON(generateResult);
-                };
+        private void HandleServerResult(string command)
+        {
+            if (command.StartsWith("Error"))
+            {
+                //Handle error
             }
+
+            switch (CommandPropertyChanged)
+            {
+                case "generate":
+                    HandleGenerateCommand(command);
+                    break;
+
+                case "solve":
+                    //HandleSolveCommand(command);
+                    break;
+            }
+        }
+
+        private void HandleGenerateCommand(string command)
+        {
+            Maze maze = Maze.FromJSON(command);
+            Maze = maze;
+        }
     }
 }

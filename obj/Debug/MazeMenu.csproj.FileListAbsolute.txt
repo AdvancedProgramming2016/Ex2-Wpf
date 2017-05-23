@@ -52,3 +52,5 @@ C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.Properti
 C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.csproj.GenerateResource.Cache
 C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.exe
 C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\obj\Debug\MazeMenu.pdb
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Danny\Documents\AdvancedPrograming2\Ex2-Wpf\bin\Debug\Newtonsoft.Json.xml

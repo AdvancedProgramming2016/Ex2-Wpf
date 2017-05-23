@@ -11,26 +11,38 @@ namespace MazeMenu.ViewModel
 {
     public class SinglePlayerGameViewModel : INotifyPropertyChanged
     {
-        private ISinglePlayerGame spModel;
+        private ISinglePlayerGame singlePlayerModel;
         private ISettingsModel settingsModel;
+        private string vm_Maze;
+
+        public SinglePlayerGameViewModel(ISinglePlayerGame singlePlayerModel,
+            ISettingsModel settingsModel)
+        {
+            this.singlePlayerModel = singlePlayerModel;
+            this.settingsModel = settingsModel;
+
+            this.singlePlayerModel.PropertyChanged +=
+                delegate (Object sender, PropertyChangedEventArgs e)
+                {
+                    NotifyPropertyChanged("VM_" + e.PropertyName);
+                };
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public string VM_Command
-        {
-            get
-            {
-                return this.spModel.
-            }
-        }
 
         public String VM_Maze
         {
             get
             {
-                return this.spModel.Maze.ToString()
+                return this.singlePlayerModel.Maze.ToString()
                     .Replace("\r\n", "")
                     .Replace("*", "0");
+            }
+
+            set
+            {
+                vm_Maze = value;
+                NotifyPropertyChanged("VM_Maze");
             }
         }
 
@@ -41,32 +53,32 @@ namespace MazeMenu.ViewModel
 
         public String VM_InitialPostion
         {
-            get { return this.spModel.Maze.InitialPos.ToString(); }
+            get { return this.singlePlayerModel.Maze.InitialPos.ToString(); }
         }
 
         public String VM_DestPosition
         {
-            get { return this.spModel.Maze.GoalPos.ToString(); }
+            get { return this.singlePlayerModel.Maze.GoalPos.ToString(); }
         }
 
-        public String VM_PlayerPosition
+       /* public String VM_PlayerPosition
         {
-            get { return this.spModel.PlayerPosition.ToString(); }
-        }
+            get { return this.singlePlayerModel.PlayerPosition.ToString(); }
+        }*/
 
         public int VM_Rows
         {
-            get { return this.spModel.Maze.Rows; }
+            get { return this.singlePlayerModel.Maze.Rows; }
         }
 
         public int VM_Cols
         {
-            get { return this.spModel.Maze.Cols; }
+            get { return this.singlePlayerModel.Maze.Cols; }
         }
 
         public String VM_MazeName
         {
-            get { return this.spModel.Maze.Name; }
+            get { return this.singlePlayerModel.Maze.Name; }
         }
 
         public void NotifyPropertyChanged(string propName)
@@ -76,38 +88,25 @@ namespace MazeMenu.ViewModel
                     new PropertyChangedEventArgs(propName));
         }
 
-        public SinglePlayerGameViewModel(ISinglePlayerGame spModel,
-            ISettingsModel settingsModel)
+       /* public void MovePlayer()
         {
-            this.spModel = spModel;
-            this.settingsModel = settingsModel;
-
-            this.spModel.PropertyChanged +=
-                delegate(Object sender, PropertyChangedEventArgs e)
-                {
-                    NotifyPropertyChanged("VM_" + e.PropertyName);
-                };
-        }
-
-        public void MovePlayer()
-        {
-            this.spModel.MovePlayer();
-        }
+            this.singlePlayerModel.MovePlayer();
+        }*/
 
         public void Restart()
         {
-            this.spModel.Restart();
+            this.singlePlayerModel.Restart();
         }
 
         public void SolveMaze()
         {
-            this.spModel.SolveMaze();
+            this.singlePlayerModel.SolveMaze();
         }
 
         public void StartNewGame(String numOfCols, String numOfRows,
             String nameOfMaze)
         {
-            this.spModel.GenerateGame(numOfCols, numOfRows, nameOfMaze);
+            this.singlePlayerModel.GenerateGame(numOfRows, numOfCols, nameOfMaze);
         }
     }
 }

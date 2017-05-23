@@ -11,11 +11,11 @@ namespace MazeMenu.Model
     public interface ISinglePlayerGame : INotifyPropertyChanged
     {
         Maze Maze { get; set; }
-        Position PlayerPosition { get; set; }
+       // Position PlayerPosition { get; set; }
 
         string CommandPropertyChanged { get; set; }
         void GenerateGame(String numOfRows, String numOfCols, String nameOfMaze);
-        void MovePlayer();
+       // void MovePlayer();
         void SolveMaze();
         void Restart();
 

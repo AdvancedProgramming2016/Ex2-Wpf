@@ -23,7 +23,9 @@ namespace MazeMenu.Model.Parsers
         {
             string finalCommand;
 
-            finalCommand = $"generate {name} {rows} {columns}";
+            //TODO change that
+            // finalCommand = $"generate {name} {rows} {columns}";
+            finalCommand = "generate ggg 5 5";
 
             return finalCommand;
         }
